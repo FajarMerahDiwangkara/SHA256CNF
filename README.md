@@ -9,3 +9,5 @@ SHA256Binary.py contain SHA256 implementation as binary string manipulation.
 If you found any bug or flaw in this implementation feel free to open github issues.  
   
 This implementation is based on SHA256 python implementation at https://github.com/keanemind/Python-SHA-256.  
+
+ps: the code still contain some comment leftover from development, if you encounter one just ignore it, haven't got the time to clean them.
