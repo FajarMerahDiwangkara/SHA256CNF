@@ -450,18 +450,9 @@ def generate_sha256_formula(message_length: int) -> \
         x80.append(variable_to_append)
     message.extend(x80)
     while (len(message) + 64) % 512 != 0:
-        x00_bitstring = bytearray_to_bitstring(bytearray.fromhex("00"))
-        x00: List[ConjunctiveNormalForm.Variable] = []
-        for x00_bit in x00_bitstring:
-            variable_to_append = ConjunctiveNormalForm.Variable()
-            if x00_bit == "0":
-                variable_to_append.set_truth_value(False)
-            elif x00_bit == "1":
-                variable_to_append.set_truth_value(True)
-            else:
-                raise ValueError("Error: x00_bit contain symbol other than 0 and 1")
-            x00.append(variable_to_append)
-        message.extend(x00)
+        variable_to_append = ConjunctiveNormalForm.Variable()
+        variable_to_append.set_truth_value(False)
+        message.append(variable_to_append)
     message_length_bitstring = bytearray_to_bitstring(bytearray(message_length.to_bytes(8, 'big')))
     if len(message_length_bitstring) != 8*8:
         raise ValueError("Error: len(message_length_bitstring) != 64 bit, got ", len(message_length_bitstring), " bit")
